@@ -67,13 +67,29 @@ public class DemoAppConfig {
 		logger.info(">>>jdbc.user = " + env.getProperty("jdbc.user"));
 		
 		//SET DATABASE CONNECTION PROPS
+		securityDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
+		securityDataSource.setUser(env.getProperty("jdbc.user"));
+		securityDataSource.setPassword(env.getProperty("jdbc.password"));
+		
 		
 		// SET CONNECTION POOL PROPS
-		
-		
-		
+		securityDataSource.setInitialPoolSize(this.getItnProperty("connection.pool.initialPoolSize"));
+		securityDataSource.setMinPoolSize(this.getItnProperty("connection.pool.minPoolSize"));
+		securityDataSource.setMaxPoolSize(this.getItnProperty("connection.pool.maxPoolSize"));
+		securityDataSource.setMaxIdleTime(this.getItnProperty("connection.pool.maxIdleTime"));
 		
 		return securityDataSource;
+	}
+	
+	//HELPER METHOD
+	//READ ENRIVOMENT PROPERTY AND CONVERT TO INT
+	private int getItnProperty(String propName) {
+		
+		String proVa1= env.getProperty(propName);
+		//CONVERT TO INT
+		int intProVa1 = Integer.valueOf(proVa1);
+		
+		return intProVa1;
 	}
 	
 	
