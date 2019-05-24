@@ -20,7 +20,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages="com.springsecurity.demo")
-@PropertySource("classpath:persistence-msql.properties")
+@PropertySource("classpath:persistence-mysql.properties")
 public class DemoAppConfig {
 
 	// SET UP A VARIBALE TO HOLD PROPERTIES
